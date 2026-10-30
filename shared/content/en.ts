@@ -58,7 +58,7 @@ const en: Portfolio = {
     { value: '1st', label: 'car rental provider live on METIS (Hertz, production-certified)', sources: ['hertz.12'] },
     { value: '6', label: 'OTA 2003/05 XML flows built for Hertz', sources: ['hertz', 'hertz.1'] },
     { value: 'Sep 2026', label: 'Carbookr integration live in production', sources: ['carbookr.8'] },
-    { value: 'Top contributor', label: 'to the car API, ~167 commits in 12 months', sources: ['commits', 'workflow.1'] },
+    { value: 'Top contributor', label: 'to the car API', sources: ['commits', 'workflow.1'] },
   ],
 
   work: {
