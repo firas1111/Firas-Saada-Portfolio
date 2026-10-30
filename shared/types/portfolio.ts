@@ -29,7 +29,7 @@ export interface Pill extends Sourced {
   dot?: boolean
 }
 
-export type ContentIcon = 'car' | 'plane' | 'network' | 'exchange' | 'layers' | 'terminal'
+export type ContentIcon = 'car' | 'plane' | 'network' | 'exchange' | 'layers' | 'terminal' | 'route'
 
 export interface Person extends Sourced {
   name: string
@@ -132,6 +132,8 @@ export interface Project extends Sourced {
   icon: ContentIcon
   title: string
   bullets: Fact[]
+  /** Optional numbered steps, shown like the integration flows. */
+  flow?: FlowStep[]
   tags: string[]
   note?: Fact
   href?: string

@@ -31,13 +31,20 @@ const { t } = useI18n()
           </h3>
         </div>
 
-        <ul class="mt-5 grid gap-3 md:grid-cols-2 md:gap-6">
+        <ul class="mt-5 grid gap-3 md:gap-6" :class="project.bullets.length > 2 ? 'md:grid-cols-3' : 'md:grid-cols-2'">
           <li v-for="bullet in project.bullets" :key="bullet.text" class="rounded-xl bg-surface-2 p-4 text-[0.9375rem]">
             {{ bullet.text }}
           </li>
         </ul>
 
-        <p v-if="project.note" class="mt-4 text-sm text-muted">{{ project.note.text }}</p>
+        <FlowSteps
+          v-if="project.flow"
+          class="mt-6"
+          :steps="project.flow"
+          :label="t('projects.flow', { name: project.title })"
+        />
+
+        <p v-if="project.note" class="mt-5 text-sm text-muted">{{ project.note.text }}</p>
         <TagList class="mt-5" :tags="project.tags" :label="t('work.stack')" />
       </article>
     </div>

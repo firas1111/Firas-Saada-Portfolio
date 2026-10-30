@@ -36,7 +36,7 @@
   "sections": {
     "work": { "eyebrow": "01 / work", "title": "Supplier integrations" },
     "experience": { "eyebrow": "02 / experience", "title": "Where I’ve worked" },
-    "projects": { "eyebrow": "03 / projects", "title": "Tools I’ve built" },
+    "projects": { "eyebrow": "03 / projects", "title": "Side projects" },
     "skills": { "eyebrow": "04 / skills", "title": "What I work with" },
     "about": { "eyebrow": "05 / about", "title": "About me" },
     "contact": { "eyebrow": "06 / contact", "title": "Let’s talk" }
@@ -48,6 +48,9 @@
   },
   "experience": {
     "present": "present"
+  },
+  "projects": {
+    "flow": "{name}: how it works"
   },
   "about": {
     "education": "Education",

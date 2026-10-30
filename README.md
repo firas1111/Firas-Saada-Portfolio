@@ -28,6 +28,7 @@ The ids point into `cv_master.json`, the fact base behind my CV. Every fact in i
 - the text claims something from the fact base's "do not claim" list. Technologies are matched as whole words, so "Java" doesn't match "JavaScript", and work done by colleagues is listed too;
 - a Transavia entry says "from scratch", an Everbloo entry mentions CI/CD, Docker or deployment, or Transavia or BSP Auto is presented as live;
 - a "live" status doesn't cite a fact that says so;
+- C# / .NET is mentioned outside the entries about the AeroGraph side project or my studies;
 - a skill isn't in the matching group of the fact base;
 - the text contains a percentage, a volume metric, a phone number or an email address other than mine.
 

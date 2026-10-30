@@ -304,6 +304,37 @@ const en: Portfolio = {
 
   projects: [
     {
+      id: 'aerograph',
+      icon: 'route',
+      title: 'AeroGraph: flight route API in C# / .NET 10',
+      bullets: [
+        {
+          text: 'ASP.NET Core minimal API that imports the OpenFlights airport and route files into an in-memory graph: 6,072 airports and 37,042 one-way connections, with unusable rows skipped and counted.',
+          sources: ['aerograph', 'aero.2', 'aero.3'],
+        },
+        {
+          text: 'Airport search and fewest-stops route finding with a breadth-first search, level by level; 400/404 errors returned as problem details.',
+          sources: ['aerograph', 'aero.3', 'aero.4'],
+        },
+        {
+          text: '27 xUnit tests (unit and integration) run in GitHub Actions CI on every push.',
+          sources: ['aerograph', 'aero.5'],
+        },
+      ],
+      flow: [
+        { label: 'Import', detail: 'OpenFlights CSV · bad rows skipped and counted', sources: ['aero.2'] },
+        { label: 'Graph', detail: 'airports as nodes · routes as one-way edges', sources: ['aero.3'] },
+        { label: 'Airport search', sources: ['aero.4'] },
+        { label: 'Fewest stops', detail: 'breadth-first search · O(V + E)', sources: ['aero.3'] },
+      ],
+      note: {
+        text: 'Personal project, October 2026. I studied C# and .NET at INSAT and built this to refresh them, with Claude Code, from my own breadth-first search logic.',
+        sources: ['aero.1', 'edu.1'],
+      },
+      tags: ['C#', '.NET 10', 'ASP.NET Core', 'CsvHelper', 'xUnit', 'GitHub Actions'],
+      sources: ['aerograph', 'aero.1', 'aero.2', 'aero.3', 'aero.4', 'aero.5'],
+    },
+    {
       id: 'ai-tooling',
       icon: 'terminal',
       title: 'AI agent skills (Claude Code) and a source-cited CV generator (Python)',
@@ -327,7 +358,8 @@ const en: Portfolio = {
   ],
 
   skills: [
-    { id: 'languages', label: 'Programming', items: ['TypeScript', 'JavaScript', 'Python', 'SQL'], sources: ['skills.languages'] },
+    // C# comes from studies and the AeroGraph side project, not a job: cite both.
+    { id: 'languages', label: 'Programming', items: ['TypeScript', 'JavaScript', 'Python', 'SQL', 'C# / ASP.NET Core'], sources: ['skills.languages', 'aero.1', 'edu.1'] },
     { id: 'backend', label: 'Backend', items: ['Node.js', 'Express', 'NestJS', 'Sequelize', 'Keycloak'], sources: ['skills.backend'] },
     { id: 'integration', label: 'APIs & integration', items: ['REST APIs', 'XML / OTA 2003/05 supplier APIs', 'token-based auth', 'WebSockets'], sources: ['skills.integration'] },
     { id: 'frontend', label: 'Frontend', items: ['Vue 3', 'Nuxt', 'Pinia', 'Vuetify', 'Angular', 'Google Maps / Places API', 'jsPDF'], sources: ['skills.frontend'] },

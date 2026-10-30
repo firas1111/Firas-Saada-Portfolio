@@ -10,6 +10,8 @@
  *    CI/CD, Docker or deployment;
  *  - Transavia or BSP Auto are presented as live, or a "live" status has no fact
  *    saying so;
+ *  - C# / .NET appears outside the entries about the AeroGraph personal project
+ *    or my studies (no C# in a job yet);
  *  - a skill isn't in the matching cv_master.json group, the text shows a
  *    percentage or a volume metric, a phone number, or an email address other
  *    than the profile one.
@@ -48,6 +50,9 @@ const EVERBLOO_FACT_GROUPS = ['hertz', 'carbookr', 'transavia', 'bspauto', 'avis
 
 /** Facts that state a production status; a `live` status must cite one of them. */
 const LIVE_EVIDENCE = ['hertz.12', 'carbookr.8']
+
+/** C# / .NET is only claimed as a personal project or studies; entries mentioning it must cite one of these. */
+const CSHARP_EVIDENCE = (id: string) => id === 'aerograph' || id.startsWith('aero.') || id.startsWith('edu.')
 
 /** Things colleagues built (fact_bank.do_not_claim), matched as phrases. */
 const NOT_MINE = [/streaming search/i, /server-sent events/i, /\bworker threads\b/i, /accounting export/i, /\bMCTO\b/, /approval workflow/i]
@@ -135,6 +140,9 @@ function checkText(text: string, where: string, sources: string[]) {
   }
   if (phoneDigits && text.replace(/\D/g, '').includes(phoneDigits)) fail('contains the phone number')
 
+  if (/C#|\.NET\b/i.test(text) && !cites(CSHARP_EVIDENCE)) {
+    fail('C# / .NET only as the AeroGraph personal project or studies (fact_bank.do_not_claim)')
+  }
   if (cites(id => everblooIds.has(id)) && /\bCI\/CD\b|\bDocker\b|\bdeploy/i.test(text)) {
     fail('Everbloo entry mentions CI/CD, Docker or deployment')
   }
