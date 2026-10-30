@@ -1,0 +1,361 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. The site is dark only for now: a light theme only needs to
+ * redefine these variables (for example under [data-theme="light"]).
+ */
+:root {
+  --bg: #070b16;
+  --surface: #0d1424;
+  --surface-2: #111a2e;
+  --border: rgb(148 163 184 / 0.14);
+  --border-hi: rgb(96 165 250 / 0.4);
+  --text: #e6edf7;
+  --muted: #94a3b8;
+  --blue: #60a5fa;
+  --cyan: #22d3ee;
+  --violet: #a78bfa;
+  --green: #34d399;
+  --amber: #fbbf24;
+  --on-accent: #04101f;
+
+  --gradient: linear-gradient(90deg, var(--blue), var(--cyan));
+  --glow: 0 14px 44px -18px rgb(96 165 250 / 0.5);
+  --content-max: 1120px;
+  --gutter: 16px;
+  --nav-height: 4rem;
+
+  color-scheme: dark;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --gutter: 24px;
+  }
+}
+
+/* Fonts are self-hosted by @nuxt/fonts at build time. */
+@theme static {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius-card: 16px;
+}
+
+/* Tailwind color utilities map to the tokens above (bg-surface, text-muted, border-line...). */
+@theme inline {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-line-hi: var(--border-hi);
+  --color-fg: var(--text);
+  --color-muted: var(--muted);
+  --color-blue: var(--blue);
+  --color-cyan: var(--cyan);
+  --color-violet: var(--violet);
+  --color-green: var(--green);
+  --color-amber: var(--amber);
+}
+
+@layer base {
+  html {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    scroll-padding-top: calc(var(--nav-height) + 1rem);
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: rgb(34 211 238 / 0.3);
+    color: var(--text);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: calc(var(--content-max) + 2 * var(--gutter));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .section {
+    padding-block: 64px;
+  }
+
+  @media (min-width: 768px) {
+    .section {
+      padding-block: 96px;
+    }
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+
+  .section-title {
+    margin-top: 12px;
+    font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .section-intro {
+    margin-top: 16px;
+    max-width: 42rem;
+    font-size: 1.0625rem;
+    color: var(--muted);
+  }
+
+  .text-gradient {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+  }
+
+  .card-interactive {
+    transition:
+      border-color 0.25s ease,
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .card-interactive:hover {
+    border-color: var(--border-hi);
+    transform: translateY(-2px);
+    box-shadow: var(--glow);
+  }
+
+  .icon-tile {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    color: var(--cyan);
+    background: linear-gradient(135deg, rgb(96 165 250 / 0.16), rgb(34 211 238 / 0.06));
+    border: 1px solid rgb(96 165 250 / 0.25);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.65rem 1.2rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .btn-primary {
+    color: var(--on-accent);
+    background: var(--gradient);
+    box-shadow: 0 8px 28px -12px rgb(34 211 238 / 0.6);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 34px -12px rgb(34 211 238 / 0.75);
+  }
+
+  .btn-outline {
+    color: var(--text);
+    background: rgb(96 165 250 / 0.06);
+    border-color: var(--border-hi);
+  }
+
+  .btn-outline:hover {
+    background: rgb(96 165 250 / 0.14);
+    border-color: var(--blue);
+  }
+
+  .btn-text {
+    padding-inline: 0.6rem;
+    color: var(--blue);
+  }
+
+  .btn-text:hover {
+    color: var(--cyan);
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgb(148 163 184 / 0.05);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .link {
+    color: var(--blue);
+    text-decoration: underline;
+    text-decoration-color: rgb(96 165 250 / 0.4);
+    text-underline-offset: 3px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+
+  .link:hover {
+    color: var(--cyan);
+    text-decoration-color: currentColor;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: var(--gutter);
+    z-index: 100;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border-hi);
+    border-radius: 10px;
+    background: var(--surface-2);
+    color: var(--text);
+  }
+
+  .skip-link:focus {
+    top: 12px;
+  }
+
+  /* Hero glow and a faint grid that fades out, CSS only. */
+  .page-glow {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: -1;
+    height: min(1100px, 140vh);
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .page-glow::before,
+  .page-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .page-glow::before {
+    background:
+      radial-gradient(55% 45% at 50% 0%, rgb(96 165 250 / 0.2), transparent 70%),
+      radial-gradient(35% 30% at 88% 18%, rgb(34 211 238 / 0.1), transparent 70%),
+      radial-gradient(30% 30% at 8% 32%, rgb(167 139 250 / 0.06), transparent 70%);
+  }
+
+  .page-glow::after {
+    background-image:
+      linear-gradient(to right, rgb(148 163 184 / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(148 163 184 / 0.07) 1px, transparent 1px);
+    background-position: center top;
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 75% 65% at 50% 0%, #000 25%, transparent 75%);
+  }
+
+  /* Scroll reveal, driven by the v-reveal directive (app/plugins/reveal.ts). */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+
+  .card-interactive:hover,
+  .btn:hover {
+    transform: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .text-gradient {
+    background: none;
+    color: CanvasText;
+  }
+}
+
+@media print {
+  .page-glow,
+  .skip-link {
+    display: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

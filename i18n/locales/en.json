@@ -1,0 +1,72 @@
+{
+  "a11y": {
+    "skip": "Skip to content",
+    "nav": "Main",
+    "menu": "Menu",
+    "home": "Firas Saada, back to top",
+    "new_tab": "(opens in a new tab)"
+  },
+  "nav": {
+    "work": "Work",
+    "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hello": {
+    "say": "Say",
+    "label": "Say hello: email me"
+  },
+  "hero": {
+    "work": "See my work",
+    "cv": "Download CV",
+    "email": "Email me"
+  },
+  "terminal": {
+    "title": "~/firas — integrations",
+    "command": "integrations --status",
+    "ok": "OK",
+    "pending": "in progress",
+    "info": "info"
+  },
+  "facts": {
+    "label": "Key facts"
+  },
+  "sections": {
+    "work": { "eyebrow": "01 / work", "title": "Supplier integrations" },
+    "experience": { "eyebrow": "02 / experience", "title": "Where I’ve worked" },
+    "projects": { "eyebrow": "03 / projects", "title": "Tools I’ve built" },
+    "skills": { "eyebrow": "04 / skills", "title": "What I work with" },
+    "about": { "eyebrow": "05 / about", "title": "About me" },
+    "contact": { "eyebrow": "06 / contact", "title": "Let’s talk" }
+  },
+  "work": {
+    "flow": "{name} booking flow",
+    "impact": "Impact",
+    "stack": "Stack"
+  },
+  "experience": {
+    "present": "present"
+  },
+  "about": {
+    "education": "Education",
+    "certification": "Certification",
+    "languages": "Languages",
+    "verify": "Verify on Credly"
+  },
+  "contact": {
+    "copy": "Copy",
+    "copy_label": "Copy email address",
+    "copied": "Copied",
+    "copied_announce": "Email address copied",
+    "copy_failed": "Couldn’t copy. Select the address instead.",
+    "linkedin": "LinkedIn",
+    "cv": "Download CV"
+  },
+  "footer": {
+    "built": "Built with Nuxt and TypeScript",
+    "source": "source",
+    "top": "Back to top"
+  }
+}
